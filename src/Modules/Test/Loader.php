@@ -1,32 +1,25 @@
 <?php
-
 namespace App\Modules\Test;
 
-class Loader implements \Tamce\SlimModule\Interfaces\Module
-{
-    use \Tamce\SlimModule\Traits\ProvideRoutes;
+use Tamce\SlimModule\Module;
+use Tamce\SlimModule\Interfaces\Module as IModule;
+use Tamce\SlimModule\Traits\ProvideRoutes;
+use Tamce\SlimModule\Traits\EmptyModule;
 
-    protected $app;
+class Loader extends Module implements IModule
+{
+    use ProvideRoutes;
 
     public function load(\Slim\App $app, $config = null)
     {
-        $this->app = $app;
+        parent::load($app, $config);
         $this->loadRoutes([
-            'prefix' => '/test',
+            'prefix' => '/module',
             'routes' => [
                 '' => ['GET', function ($req, $res) {
                     return $res->write('The module system is working.');
                 }]
             ]
         ]);
-    }
-
-    public function setup()
-    {
-    }
-
-    public function getApp()
-    {
-        return $this->app;
     }
 }
