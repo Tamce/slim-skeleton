@@ -34,7 +34,12 @@ $container['log'] = function ($c) {
     return $log;
 };
 
+/** Setup Module Loader */
+$modules = new \Tamce\SlimModule\Loader($app, 'App\\Modules\\');
+$container['modules'] = $modules;
+
 /** Setup Routes */
 require BASEPATH.'src/routes/web.php';
+require BASEPATH.'src/routes/modules.php';
 
 return $app;
