@@ -19,7 +19,8 @@
     },
     "autoload": {
         "psr-4": {
-            "APP\\": "./src"
+            "APP\\": "./src",
+            "Tamce\\": "./packages/slim-module/src"
         }
     }
 }
