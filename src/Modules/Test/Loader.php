@@ -4,7 +4,6 @@ namespace App\Modules\Test;
 use Tamce\SlimModule\Module;
 use Tamce\SlimModule\Interfaces\Module as IModule;
 use Tamce\SlimModule\Traits\ProvideRoutes;
-use Tamce\SlimModule\Traits\EmptyModule;
 
 class Loader extends Module implements IModule
 {
@@ -23,3 +22,4 @@ class Loader extends Module implements IModule
         ]);
     }
 }
+
