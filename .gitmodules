@@ -1,0 +1,3 @@
+[submodule "slim-module"]
+	path = packages/slim-module
+	url = https://github.com/tamce/slim-module
