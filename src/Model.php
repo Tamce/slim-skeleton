@@ -1,4 +1,4 @@
 <?php
-namespace App\Models;
+namespace App;
 
 class Model extends \Illuminate\Database\Eloquent\Model {}

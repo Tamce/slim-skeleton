@@ -1,14 +1,16 @@
 <?php
-defined('BASEPATH') or define('BASEPATH', realpath(__DIR__.'/../').'/');
+defined('BASEPATH') or define('BASEPATH', realpath(__DIR__.'/../../').'/');
 require BASEPATH.'vendor/autoload.php';
 
 /** Setup Dotenv */
-require BASEPATH.'src/helpers.php';
+require BASEPATH.'src/bootstrap/helpers.php';
 $env = new \Dotenv\Dotenv(BASEPATH);
 $env->load();
 
+date_default_timezone_set(env('TIMEZONE', date_default_timezone_get()));
+
 /** Boot App */
-$app = new \Slim\App(['settings' => require BASEPATH.'src/config.php']);
+$app = new \Slim\App(['settings' => require BASEPATH.'src/bootstrap/config.php']);
 $container = $app->getContainer();
 
 /** Setup Eloquent */
@@ -27,7 +29,7 @@ $container['session'] = function ($c) {
 };
 
 /** Setup Logger */
-$container['log'] = function ($c) {
+$container['logger'] = function ($c) {
     $config = $c['settings']['log'];
     $log = new \Monolog\Logger($config['name']);
     $log->pushHandler(new \Monolog\Handler\StreamHandler(BASEPATH.$config['file'], $config['level']));
@@ -35,6 +37,6 @@ $container['log'] = function ($c) {
 };
 
 /** Setup Routes */
-require BASEPATH.'src/routes/web.php';
+require BASEPATH.'src/routes.php';
 
 return $app;

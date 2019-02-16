@@ -1,3 +1,3 @@
 <?php
-$app = require '../src/bootstrap.php';
+$app = require '../src/bootstrap/app.php';
 $app->run();
