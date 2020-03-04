@@ -1,9 +1,13 @@
 <?php
 defined('BASEPATH') or define('BASEPATH', realpath(__DIR__.'/../../').'/');
+require BASEPATH.'src/bootstrap/helpers.php';
 require BASEPATH.'vendor/autoload.php';
 
 /** Setup Dotenv */
-require BASEPATH.'src/bootstrap/helpers.php';
+if (!file_exists(BASEPATH.'.env')) {
+    echo ".env file not found";
+    die();
+}
 $env = new \Dotenv\Dotenv(BASEPATH);
 $env->load();
 
