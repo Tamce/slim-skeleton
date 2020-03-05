@@ -11,5 +11,6 @@ class Controller
         // extract useful services
         $this->session = $container->session;
         $this->logger = $container->logger;
+        $this->module = $container->module;
     }
 }

@@ -19,7 +19,9 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "./src"
+            "App\\": "./src",
+            "ElfStack\\SlimModule\\": "./packages/slim-module/src",
+            "Pachico\\SlimSwoole\\": "./packages/slim-swoole/src"
         }
     }
 }
